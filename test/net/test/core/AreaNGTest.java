@@ -17,10 +17,9 @@ import org.testng.annotations.Test;
  * @author maryan
  */
 public class AreaNGTest {
-    
+
     public AreaNGTest() {
     }
-
 
     /**
      * Test of getSize method, of class Area.
@@ -29,9 +28,9 @@ public class AreaNGTest {
     public void testArea() {
         System.out.println("testArea");
         Area area = new Area();
-        Line line1 = new Line(new Point(1, 0), new Point(2,4));
-        Line line2 = new Line(new Point(0, 2), new Point(4,1));
-        Line line3 = new Line(new Point(1, 3), new Point(7,3));
+        Line line1 = new Line(new Point(1, 0), new Point(2, 4));
+        Line line2 = new Line(new Point(0, 2), new Point(4, 1));
+        Line line3 = new Line(new Point(1, 3), new Point(7, 6));
         Line line4 = new Line(new Point(3, 3), new Point(3, 5));
         Line line5 = new Line(new Point(7, 6), new Point(6, 9));
         assertFalse(area.getSize() == 4, "incorrect area lines size");
@@ -42,21 +41,19 @@ public class AreaNGTest {
         assertTrue(area.getSize() == 4, "incorrect area lines size");
         assertTrue(area.contains(line3));
         assertFalse(area.contains(line5));
-        
+
         List<Line> lines = area.getLines();
         assertEquals(lines.size(), 4);
-        for (Line l: lines) {
-            System.out.println(l.p1.x + " " + l.p2.x);
-        }
+        
         area.sort();
-        System.out.println("\n");
+
         List<Line> lines1 = area.getLines();
         assertEquals(lines1.size(), 3);
-        for (Line l: lines1) {
-            System.out.println(l.p1.x + " " + l.p2.x);
-        }
+        assertTrue(lines1.get(1).p1.x <= lines1.get(2).p1.x);
+        assertFalse(lines1.get(0).p1.x > lines1.get(1).p1.x);
+        assertTrue(lines.get(1).p1 == lines1.get(1).p1);
+        assertTrue(lines.get(1).p2.y == 6);
+        
     }
 
-
-    
 }
