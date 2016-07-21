@@ -33,26 +33,33 @@ public class AreaNGTest {
         Line line3 = new Line(new Point(1, 3), new Point(7, 6));
         Line line4 = new Line(new Point(3, 3), new Point(3, 5));
         Line line5 = new Line(new Point(7, 6), new Point(6, 9));
+        
         assertFalse(area.getSize() == 4, "incorrect area lines size");
+        
         area.add(line1);
         area.add(line2);
         area.add(line3);
         area.add(line4);
+        
         assertTrue(area.getSize() == 4, "incorrect area lines size");
         assertTrue(area.contains(line3));
         assertFalse(area.contains(line5));
 
         List<Line> lines = area.getLines();
-        assertEquals(lines.size(), 4);
+        
+        assertEquals(lines.size(), 4, "size lines in list incorrect");
         
         area.sort();
 
         List<Line> lines1 = area.getLines();
-        assertEquals(lines1.size(), 3);
-        assertTrue(lines1.get(1).p1.x <= lines1.get(2).p1.x);
-        assertFalse(lines1.get(0).p1.x > lines1.get(1).p1.x);
-        assertTrue(lines.get(1).p1 == lines1.get(1).p1);
-        assertTrue(lines.get(1).p2.y == 6);
+        
+        assertEquals(lines1.size(), 3, "merge lines faild");
+        assertTrue(lines1.get(1).p1.x <= lines1.get(2).p1.x, "sort lines faild");
+        assertFalse(lines1.get(0).p1.x > lines1.get(1).p1.x, "sort lines faild");
+        assertTrue(lines.get(1).p1 == lines1.get(1).p1, "lines equality faild");
+        assertTrue(lines.get(1).p2.y == 6, "filtered value for p2 faild");
+        assertTrue(lines1.get(1).p2.y == 6, "filtered value for p2 faild");
+        assertTrue(lines.size() == 4, "size lines after sort faild");
         
     }
 
