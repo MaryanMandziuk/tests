@@ -33,7 +33,7 @@ public class AreaNGTest {
         Line line3 = new Line(new Point(1, 3), new Point(7, 6));
         Line line4 = new Line(new Point(3, 3), new Point(3, 5));
         Line line5 = new Line(new Point(7, 6), new Point(6, 9));
-        
+        c
         assertFalse(area.getSize() == 4, "incorrect area lines size");
         
         area.add(line1);
